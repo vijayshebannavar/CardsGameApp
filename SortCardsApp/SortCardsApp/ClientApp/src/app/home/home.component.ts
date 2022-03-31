@@ -106,6 +106,7 @@ export class HomeComponent implements OnInit {
 
   OnClearClick(){
     this.selectedItems = [];
+    this.outputs = [];
     
   }
 
