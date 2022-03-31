@@ -1,0 +1,57 @@
+.card{   
+    word-wrap: normal !important;
+    background-color: #fff !important;
+    height: 8rem !important;
+    width: 80px !important;
+    border: 1px solid black;
+}
+.card-deck{
+    gap:10px !important;
+}
+
+.card-deck .card{
+    flex:none !important;
+}
+.card-text{
+    position: absolute;
+    top: 5px;
+    left: 3px;
+}
+
+.card-text-bottom{
+    position: absolute;
+    bottom: -11px;
+    right: 3px;
+}
+
+.card-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    height: 100%;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.display-message{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-top: 35px;
+}
+
+
+
+.cards-container{
+    width: 100%;
+}
+
+.selecter{
+    width: 266px;
+}

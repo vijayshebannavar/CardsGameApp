@@ -1,0 +1,49 @@
+<div class="main-container">
+  <div class="selecter">
+    <h5>Select the Input Cards:</h5>
+    <div>
+      <ng-multiselect-dropdown
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems">
+      </ng-multiselect-dropdown>
+    </div>
+  </div>
+  
+  <div class="cards-container">
+    <div *ngIf="selectedItems.length > 0">
+  
+  <h5>Input Cards</h5>
+  <div class="card-deck">
+    <div class="card" *ngFor="let val of selectedItems">
+      <!-- set a width on the image otherwise it will expand to full width       -->
+      <div class="card-body">
+        <h4 class="card-title">{{val.card}}</h4>
+        <p class="card-text">{{val.card}}</p>
+        <p class="card-text-bottom">{{val.card}}</p>
+      </div>
+    </div>
+  </div>
+  <br/>
+  
+  <button type="button" class="btn btn-primary" (click)="OnSortClick()">Sort Cards</button>
+  <br/>
+  <br/>
+  <h5>Sorted Cards</h5>
+  
+  <div class="card-deck">
+    <div class="card" *ngFor="let val of outputs">
+      <div class="card-body">
+        <h5 class="card-title">{{val}}</h5>
+        <p class="card-text">{{val}}</p>
+        <p class="card-text-bottom">{{val}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="display-message" *ngIf="selectedItems.length == 0">
+<h5>Welcome to Card Game! Select the Inputs to display the data</h5>
+</div>
+  <br/>
+  </div>
+</div>
