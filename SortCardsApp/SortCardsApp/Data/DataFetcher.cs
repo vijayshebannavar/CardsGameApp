@@ -11,36 +11,45 @@ namespace SortCardsApp.Data
         public List<CardModel> GetCardDetails(List<string> inputValues)
         {
             List<CardModel> listofCards = new List<CardModel>();
-
-            foreach(string inputValue in inputValues)
+            try
             {
-                CardModel card = new CardModel();
-                card.CardName = inputValue;
-                if (inputValue.Contains("T"))
+               
+                foreach (string inputValue in inputValues)
                 {
-                    card.IsSpecialCard = true;                 
+                    CardModel card = new CardModel();
+                    card.CardName = inputValue;
+                    if (inputValue.Contains("T"))
+                    {
+                        card.IsSpecialCard = true;
+                    }
+                    else
+                    {
+                        card.IsSpecialCard = false;
+                    }
+
+                    //Get the suit name
+                    card.SuitName = inputValue.Substring(inputValue.Length - 1, 1);
+
+                    //Get the Rank of Suit as per the priority
+                    card.SuitRank = GetSuitRank(card.SuitName);
+
+                    //Get the Value Name apart from SuitName
+                    card.ValueName = inputValue.Substring(0, inputValue.Length - 1);
+
+                    //Get the Value Rank from Value Name
+                    card.ValueRank = GetValueRank(card.SuitName, card.ValueName);
+                    listofCards.Add(card);
+
                 }
-                else
-                {
-                    card.IsSpecialCard = false;
-                }
-                card.SuitName = inputValue.Substring(inputValue.Length - 1, 1);
-                card.SuitRank = GetSuitRank(card.SuitName);
-                card.ValueName = inputValue.Substring(0, inputValue.Length - 1);
-                card.ValueRank = GetValueRank(card.SuitName,card.ValueName);
-                listofCards.Add(card);
-                
+            }
+            catch(Exception ex)
+            {
+                throw;
             }
 
             return listofCards;
         }
 
-        //public List<string> GetSortedList(List<CardModel> listOfCards)
-        //{
-        //    Comparer cardsComparer = new Comparer();
-        //    listOfCards.Sort(cardsComparer);
-        //    return listOfCards.Select(x => x.CardName).ToList();
-        //}
 
         private int GetValueRank(string suitName, string valueName)
         {

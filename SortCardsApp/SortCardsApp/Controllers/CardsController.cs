@@ -23,11 +23,20 @@ namespace SortCardsApp.Controllers
         [HttpPost]
         public IEnumerable<string> SortData([FromBody] List<string> listofInputs)
         {
-            //Get the Card Details from DataFetcher Class
-            List<CardModel> listOfCards = dataFetcher.GetCardDetails(listofInputs);
-            //Sorts the Input Cards based on the Suit Rank and Its Value Rank
-            var sortedList = GetSortedList(listOfCards);
-            return sortedList;
+            try
+            {
+                //Get the Card Details from DataFetcher Class
+                List<CardModel> listOfCards = dataFetcher.GetCardDetails(listofInputs);
+                //Sorts the Input Cards based on the Suit Rank and Its Value Rank
+                var sortedList = GetSortedList(listOfCards);
+                return sortedList;
+            }
+            catch(Exception ex)
+            {
+                //Handle Exception Logger
+
+            }
+            return new List<string>();
         }
 
         private List<string> GetSortedList(List<CardModel> listOfCards)

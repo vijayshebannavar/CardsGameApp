@@ -8,6 +8,10 @@
           [(ngModel)]="selectedItems">
       </ng-multiselect-dropdown>
     </div>
+    <br/>
+    <div *ngIf="selectedItems.length > 0">
+      <button type="button" class="btn btn-primary" (click)="OnClearClick()">Clear</button>
+    </div>
   </div>
   
   <div class="cards-container">
